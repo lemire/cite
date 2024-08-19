@@ -67,7 +67,7 @@ function wpcp_admin() {
         <div class="wpcp-admin">
             <h2><?php _e('Cite Settings', 'cite') ?></h2>
             <p><?php _e('Help readers know how to cite your article correctly. Enter the reference text you wish to appear in the cite box using the editor below. Add the cite box to any page/post using shortcode', 'cite') ?> <code>[cite]</code></p>
-            <p><textarea cols="80" rows="5" name="wpcp_setting[setting]" id="wpcp_setting[setting]" class="wpcp-textarea"><?php echo $wpcp_setting[setting]; ?></textarea></p>
+            <p><textarea cols="80" rows="5" name="wpcp_setting[setting]" id="wpcp_setting[setting]" class="wpcp-textarea"><?php echo $wpcp_setting['setting']; ?></textarea></p>
             <p class="wpcp-templates-info"><span><?php _e('Available templates tags:', 'cite') ?></span><br>
               {author} - <?php _e('the post/page author','cite') ?><br>
               {title} - <?php _e('the title of your post/page', 'cite') ?><br>
@@ -101,7 +101,7 @@ function cite_shortcode() {
 
     $find_string = array('{author}','{sitename}', '{title}', '{date}', '{publication_date}', '{permalink}');
     $replace_string = array(get_the_author(), get_bloginfo('name'), get_the_title(), displayTodaysDate(), get_the_date(), '<a href="' . get_permalink() . '">' . get_permalink() . '</a>');
-    $edited_setting = str_replace($find_string, $replace_string, $wpcp_setting[setting]);
+    $edited_setting = str_replace($find_string, $replace_string, $wpcp_setting['setting']);
     return '<div class="wpcp">' . $edited_setting . '</div>';
 }
 
